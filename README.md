@@ -10,6 +10,7 @@ A button widget for the (ratatui library)[https://github.com/ratatui/ratatui].
 
 The goal is to have buttons that look like these:
 
+```
   ⸝─────⸜
  ╱   🬿   ╲
 ╳    █🭬   ╳
@@ -36,5 +37,5 @@ The goal is to have buttons that look like these:
   ⸝───⸜
  ▕  ▶  ▏ 
   ⸌───⸍
-
+```
 

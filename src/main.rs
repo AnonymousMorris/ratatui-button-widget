@@ -28,7 +28,6 @@ fn run (mut terminal: Terminal<CrosstermBackend<Stdout>>) -> Result<(), io::Erro
         let _ = terminal.draw(|frame| {
             let inner = hex.inner(frame.area());
             frame.render_widget(hex, frame.area());
-            // play.render(frame.area(), frame.buffer_mut());
             frame.render_widget(play, inner);
         });
         if matches!(event::read()?, Event::Key(_)) {

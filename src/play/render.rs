@@ -1,6 +1,8 @@
 use std::cmp::min;
 use ratatui::prelude::*;
 
+use crate::play::Play;
+
 #[derive(Debug, Clone, Copy, Eq, PartialEq, Hash)]
 pub struct PlaySet {
     pub top_corner: &'static str,
@@ -18,26 +20,14 @@ pub const PLAIN: PlaySet = PlaySet {
     single_char_symbol: "▶",
 };
 
-struct Play {
-    style: Style,
-    char_set: PlaySet,
-}
 
-
-impl Widget for Play {
+impl ratatui::widgets::Widget for Play {
     fn render(mut self, area: Rect, buf: &mut Buffer) {
         self.render_play(area, buf);
     }
 }
 
 impl Play {
-    fn new() -> Play {
-        Play {
-            style: Style::default(),
-            char_set: PLAIN,
-        }
-    }
-
     fn render_play(&mut self, area: Rect, buf: &mut Buffer) {
         if area.width == 0 || area.height == 0 {
             return;
@@ -84,7 +74,7 @@ impl Play {
         }
         // draw middle line
         if area.height % 2 == 1 {
-            let x = area.right();
+            let x = area.right() - 1;
             let y = area.top() + mid_y;
             buf[(x, y)]
                 .set_symbol(self.char_set.right_corner)

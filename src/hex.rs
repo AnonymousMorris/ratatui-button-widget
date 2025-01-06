@@ -228,5 +228,14 @@ impl Hexagon {
                 .set_style(self.border_style);
         }
     }
+
+    pub fn inner(&self, area: Rect) -> Rect {
+        let mut inner = area;
+        inner.x.saturating_add(1).min(inner.right());
+        inner.width.saturating_sub(2);
+        inner.y.saturating_add(1).min(inner.bottom());
+        inner.height.saturating_sub(2);
+        inner
+    }
 }
 
